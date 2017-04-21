@@ -1,6 +1,6 @@
 var express = require('express');
 var cors = require('cors');
-var bing = require('node-bing-api') ({accKey: "5c9191867ba14d98a5923efd6909a114"});
+var bing = require('node-bing-api') ({accKey: process.env.BING_API_KEY});
 var mongo = require('mongodb').MongoClient;
 
 var app = express();
