@@ -26,7 +26,7 @@ app.get('/imagesearch/:value', function(req, res) {
             }
         );
        });
-       mongo.connect('mongodb://localhost:27017/latest', function(err, db) {
+       mongo.connect(process.env.MONGOLAB_URI, function(err, db) {
            if (err) {
                res.send('There was an error connecting to the database.');
            }
@@ -44,7 +44,7 @@ app.get('/imagesearch/:value', function(req, res) {
 });
 
 app.get('/latest', function(req, res) {
-    mongo.connect('mongodb://localhost:27017/latest', function(err, db) {
+    mongo.connect(process.env.MONGOLAB_URI, function(err, db) {
         if (err) {
             res.send('There was an error connecting to the database.');
         }
@@ -59,6 +59,6 @@ app.get('/latest', function(req, res) {
     });
 });
 
-app.listen(8000, function() {
+app.listen(process.env.PORT || 8000, function() {
     console.log('App is working...');
 })
